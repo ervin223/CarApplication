@@ -1,0 +1,36 @@
+﻿@model ShopTARgv23.Models.Cars.CarDetailsViewModel
+
+<h1>Car Details</h1>
+
+<div>
+    <h4>Car Details</h4>
+    <hr />
+    <dl class="row">
+        <dt>Id</dt>
+        <dd>@Model.Id</dd>
+
+        <dt>Name</dt>
+        <dd>@Model.Name</dd>
+
+        <dt>Type</dt>
+        <dd>@Model.Type</dd>
+
+        <dt>Built Date</dt>
+        <dd>@Model.BuiltDate</dd>
+
+        <dt>Cargo Weight</dt>
+        <dd>@Model.CargoWeight</dd>
+
+        <dt>Crew</dt>
+        <dd>@Model.Crew</dd>
+
+        <dt>Engine Power</dt>
+        <dd>@Model.EnginePower</dd>
+
+        @foreach (var images in Model.FileToApiViewModels)
+        {
+            <partial name="_Images" model="images" />
+        }
+    </dl>
+    <a asp-action="Index" asp-controller="cars" class="btn btn-danger">Back</a>
+</div>

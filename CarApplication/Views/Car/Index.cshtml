@@ -1,0 +1,42 @@
+﻿@model IEnumerable<ShopTARgv23.Models.Cars.CarIndexViewModel>
+
+@{
+    int rowNumber = 1;
+}
+
+<div>
+    <a asp-action="create" asp-controller="cars" type="submit" class="btn btn-primary">Create New Car</a>
+</div>
+
+<h1>Cars</h1>
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Nr</th>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Built Date</th>
+            <th>Engine Power</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var car in Model)
+        {
+            <tr>
+                <td>@rowNumber</td>
+                <td>@car.Name</td>
+                <td>@car.Type</td>
+                <td>@car.BuiltDate</td>
+                <td>@car.EnginePower</td>
+                <td>
+                    <a asp-action="details" asp-controller="cars" asp-route-id="@car.Id" class="btn btn-info">Details</a>
+                    <a asp-action="update" asp-controller="cars" asp-route-id="@car.Id" class="btn btn-primary">Update</a>
+                    <a asp-action="delete" asp-controller="cars" asp-route-id="@car.Id" class="btn btn-outline-danger">Delete</a>
+                </td>
+            </tr>
+            rowNumber++;
+        }
+    </tbody>
+</table>

@@ -1,0 +1,4 @@
+C:\Users\admin\Documents\CarApplication\CarApplication.Data\obj\Debug\net8.0\CarApplication.Data.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\admin\Documents\CarApplication\CarApplication.Data\obj\Debug\net8.0\CarApplication.Data.AssemblyInfoInputs.cache
+C:\Users\admin\Documents\CarApplication\CarApplication.Data\obj\Debug\net8.0\CarApplication.Data.AssemblyInfo.cs
+C:\Users\admin\Documents\CarApplication\CarApplication.Data\obj\Debug\net8.0\CarApplication.Data.csproj.CoreCompileInputs.cache
