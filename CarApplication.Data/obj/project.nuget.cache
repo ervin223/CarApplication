@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "Yux3CRSkmUmklquLkcs+VbgKPT9kcKqTWmrukI6kG11qwaCPL+qzWLlRCBlMMVtV9+K5ts557Js5D5Gj+aNQNQ==",
+  "dgSpecHash": "uEvbWfYsjCfsQjvjg7TCbOliwdizPuYwNzWOsEIMikFNp7hH5jaU5N0kXAfykLG32/HbYGyngYRljcT4efqgyQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\admin\\Documents\\CarApplication\\CarApplication.Data\\CarApplication.Data.csproj",
   "expectedPackageFiles": [
@@ -34,8 +34,10 @@
     "C:\\Users\\admin\\.nuget\\packages\\microsoft.identitymodel.tokens\\6.35.0\\microsoft.identitymodel.tokens.6.35.0.nupkg.sha512",
     "C:\\Users\\admin\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
     "C:\\Users\\admin\\.nuget\\packages\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",
+    "C:\\Users\\admin\\.nuget\\packages\\microsoft.openapi\\1.6.22\\microsoft.openapi.1.6.22.nupkg.sha512",
     "C:\\Users\\admin\\.nuget\\packages\\microsoft.sqlserver.server\\1.0.0\\microsoft.sqlserver.server.1.0.0.nupkg.sha512",
     "C:\\Users\\admin\\.nuget\\packages\\microsoft.win32.systemevents\\6.0.0\\microsoft.win32.systemevents.6.0.0.nupkg.sha512",
+    "C:\\Users\\admin\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\7.2.0\\swashbuckle.aspnetcore.swagger.7.2.0.nupkg.sha512",
     "C:\\Users\\admin\\.nuget\\packages\\system.clientmodel\\1.0.0\\system.clientmodel.1.0.0.nupkg.sha512",
     "C:\\Users\\admin\\.nuget\\packages\\system.configuration.configurationmanager\\6.0.1\\system.configuration.configurationmanager.6.0.1.nupkg.sha512",
     "C:\\Users\\admin\\.nuget\\packages\\system.diagnostics.diagnosticsource\\9.0.0\\system.diagnostics.diagnosticsource.9.0.0.nupkg.sha512",

@@ -4,32 +4,49 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
-using CarApplication.Data; // Убедитесь, что это правильное пространство имён
-using CarApplication.Core; // Для интерфейсов и DTO, связанных с машинами
-using CarApplication.ApplicationServices; // Для реализации сервисов
+using AutoMapper;
+using Microsoft.OpenApi.Models;
+using CarApplication.Data; // Пространство имен для CarApplicationContext
+using CarApplication.Services; // Пространство имен для ICarService и CarService
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddControllersWithViews(); // MVC Framework
+// Добавление MVC Framework
+builder.Services.AddControllersWithViews();
 
+// Настройка подключения к базе данных через DbContext
 builder.Services.AddDbContext<CarApplicationContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+// Регистрация зависимостей для Dependency Injection
 builder.Services.AddScoped<ICarService, CarService>();
 
+// Добавление AutoMapper
 builder.Services.AddAutoMapper(typeof(Program));
 
+// Добавление Swagger
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(options =>
+{
+    options.SwaggerDoc("v1", new OpenApiInfo
+    {
+        Title = "Car Application API",
+        Version = "v1",
+        Description = "API для управления автомобилями"
+    });
+});
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+// Настройка middleware
 if (app.Environment.IsDevelopment())
 {
     app.UseDeveloperExceptionPage();
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerUI(options =>
+    {
+        options.SwaggerEndpoint("/swagger/v1/swagger.json", "Car Application API v1");
+    });
 }
 else
 {
@@ -44,7 +61,7 @@ app.UseRouting();
 
 app.UseAuthorization();
 
-// Настройка маршрута по умолчанию
+// Настройка маршрутов
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Cars}/{action=Index}/{id?}");

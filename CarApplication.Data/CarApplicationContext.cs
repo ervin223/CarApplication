@@ -1,9 +1,14 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.EntityFrameworkCore;
 
-public class CarApplicationContext : DbContext
+namespace CarApplication.Data
 {
-    public CarApplicationContext(DbContextOptions<CarApplicationContext> options) : base(options) { }
+    public class CarApplicationContext : DbContext
+    {
+        public CarApplicationContext(DbContextOptions<CarApplicationContext> options)
+            : base(options)
+        {
+        }
 
-    public DbSet<Car> Cars { get; set; }
-    public DbSet<FileToApi> FileToApis { get; set; }
+        public DbSet<Car> Cars { get; set; }
+    }
 }

@@ -1,13 +1,13 @@
-﻿using CarApplication.Core.Domain;
-using CarApplication.Core.Dto;
+﻿using CarApplication.Core.Dto;
 
-namespace CarApplication.Core.ServiceInterface
+namespace CarApplication.Services
 {
     public interface ICarServices
     {
-        Task<Car> DetailsAsync(Guid id);
-        Task<Car> Update(CarDto dto);
-        Task<Car> Delete(Guid id);
-        Task<Car> Create(CarDto dto);
+        Task<IEnumerable<CarDto>> GetAllAsync();
+        Task<CarDto?> GetDetailsAsync(Guid id);
+        Task CreateAsync(CarDto carDto);
+        Task UpdateAsync(CarDto carDto);
+        Task DeleteAsync(Guid id);
     }
 }
