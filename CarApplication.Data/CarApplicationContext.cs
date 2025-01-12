@@ -12,3 +12,4 @@ namespace CarApplication.Data
         public DbSet<Car> Cars { get; set; }
     }
 }
+
