@@ -6,25 +6,20 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using AutoMapper;
 using Microsoft.OpenApi.Models;
-using CarApplication.Data; // Пространство имен для CarApplicationContext
-using CarApplication.Services; // Пространство имен для ICarService и CarService
+using CarApplication.Data; 
+using CarApplication.Services; 
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Добавление MVC Framework
 builder.Services.AddControllersWithViews();
 
-// Настройка подключения к базе данных через DbContext
 builder.Services.AddDbContext<CarApplicationContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-// Регистрация зависимостей для Dependency Injection
 builder.Services.AddScoped<ICarService, CarService>();
 
-// Добавление AutoMapper
 builder.Services.AddAutoMapper(typeof(Program));
 
-// Добавление Swagger
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>
 {
@@ -38,7 +33,6 @@ builder.Services.AddSwaggerGen(options =>
 
 var app = builder.Build();
 
-// Настройка middleware
 if (app.Environment.IsDevelopment())
 {
     app.UseDeveloperExceptionPage();
@@ -61,7 +55,6 @@ app.UseRouting();
 
 app.UseAuthorization();
 
-// Настройка маршрутов
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Cars}/{action=Index}/{id?}");
