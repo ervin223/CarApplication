@@ -1,70 +1,62 @@
-﻿using Microsoft.EntityFrameworkCore;
-using CarApplication.Core.Domain;
-using CarApplication.Core.Dto;
-using CarApplication.Core.ServiceInterface;
+﻿using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using Microsoft.EntityFrameworkCore;
+using AutoMapper;
+using Microsoft.OpenApi.Models;
 using CarApplication.Data;
+using CarApplication.Services;
 
-namespace CarApplication.ApplicationServices.Services
+var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddControllersWithViews();
+
+builder.Services.AddDbContext<CarApplicationContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+builder.Services.AddScoped<ICarService, CarService>();
+
+builder.Services.AddAutoMapper(typeof(Program));
+
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen(options =>
 {
-    public class CarService : ICarService
+    options.SwaggerDoc("v1", new OpenApiInfo
     {
-        private readonly CarApplicationContext _context;
+        Title = "Car Application API",
+        Version = "v1",
+        Description = "API для управления автомобилями"
+    });
+});
 
-        public CarService(CarApplicationContext context)
-        {
-            _context = context;
-        }
+var app = builder.Build();
 
-        public async Task<List<Car>> GetAllAsync()
-        {
-            return await _context.Cars.ToListAsync();
-        }
-
-        public async Task<Car> GetDetailsAsync(Guid id)
-        {
-            return await _context.Cars.FirstOrDefaultAsync(x => x.Id == id);
-        }
-
-        public async Task<Car> CreateAsync(CarDto dto)
-        {
-            var car = new Car
-            {
-                Id = Guid.NewGuid(),
-                Make = dto.Make,
-                Model = dto.Model,
-                Year = dto.Year,
-                CreatedAt = DateTime.UtcNow,
-                ModifiedAt = DateTime.UtcNow
-            };
-
-            await _context.Cars.AddAsync(car);
-            await _context.SaveChangesAsync();
-            return car;
-        }
-
-        public async Task<Car> UpdateAsync(CarDto dto)
-        {
-            var car = await _context.Cars.FirstOrDefaultAsync(x => x.Id == dto.Id);
-            if (car == null) return null;
-
-            car.Make = dto.Make;
-            car.Model = dto.Model;
-            car.Year = dto.Year;
-            car.ModifiedAt = DateTime.UtcNow;
-
-            _context.Cars.Update(car);
-            await _context.SaveChangesAsync();
-            return car;
-        }
-
-        public async Task<Car> DeleteAsync(Guid id)
-        {
-            var car = await _context.Cars.FirstOrDefaultAsync(x => x.Id == id);
-            if (car == null) return null;
-
-            _context.Cars.Remove(car);
-            await _context.SaveChangesAsync();
-            return car;
-        }
-    }
+if (app.Environment.IsDevelopment())
+{
+    app.UseDeveloperExceptionPage();
+    app.UseSwagger();
+    app.UseSwaggerUI(options =>
+    {
+        options.SwaggerEndpoint("/swagger/v1/swagger.json", "Car Application API v1");
+    });
 }
+else
+{
+    app.UseExceptionHandler("/Home/Error");
+    app.UseHsts();
+}
+
+app.UseHttpsRedirection();
+app.UseStaticFiles();
+
+app.UseRouting();
+
+app.UseAuthorization();
+
+app.MapControllerRoute(
+    name: "default",
+    pattern: "{controller=Cars}/{action=Index}/{id?}");
+
+app.Run();

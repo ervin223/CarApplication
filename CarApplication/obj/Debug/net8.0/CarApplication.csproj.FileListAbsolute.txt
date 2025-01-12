@@ -1,0 +1,9 @@
+C:\Users\admin\Documents\CarApplication\CarApplication\obj\Debug\net8.0\CarApplication.csproj.AssemblyReference.cache
+C:\Users\admin\Documents\CarApplication\CarApplication\obj\Debug\net8.0\CarApplication.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\admin\Documents\CarApplication\CarApplication\obj\Debug\net8.0\CarApplication.AssemblyInfoInputs.cache
+C:\Users\admin\Documents\CarApplication\CarApplication\obj\Debug\net8.0\CarApplication.AssemblyInfo.cs
+C:\Users\admin\Documents\CarApplication\CarApplication\obj\Debug\net8.0\CarApplication.csproj.CoreCompileInputs.cache
+C:\Users\admin\Documents\CarApplication\CarApplication\obj\Debug\net8.0\CarApplication.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\admin\Documents\CarApplication\CarApplication\obj\Debug\net8.0\CarApplication.RazorAssemblyInfo.cache
+C:\Users\admin\Documents\CarApplication\CarApplication\obj\Debug\net8.0\CarApplication.RazorAssemblyInfo.cs
+C:\Users\admin\Documents\CarApplication\CarApplication\obj\Debug\net8.0\CarApplication.sourcelink.json
