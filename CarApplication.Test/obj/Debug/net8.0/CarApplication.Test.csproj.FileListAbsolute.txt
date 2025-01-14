@@ -1,0 +1,6 @@
+C:\Users\admin\Documents\CarApplication\CarApplication.Test\obj\Debug\net8.0\CarApplication.Test.csproj.AssemblyReference.cache
+C:\Users\admin\Documents\CarApplication\CarApplication.Test\obj\Debug\net8.0\CarApplication.Test.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\admin\Documents\CarApplication\CarApplication.Test\obj\Debug\net8.0\CarApplication.Test.AssemblyInfoInputs.cache
+C:\Users\admin\Documents\CarApplication\CarApplication.Test\obj\Debug\net8.0\CarApplication.Test.AssemblyInfo.cs
+C:\Users\admin\Documents\CarApplication\CarApplication.Test\obj\Debug\net8.0\CarApplication.Test.csproj.CoreCompileInputs.cache
+C:\Users\admin\Documents\CarApplication\CarApplication.Test\obj\Debug\net8.0\CarApplication.Test.sourcelink.json

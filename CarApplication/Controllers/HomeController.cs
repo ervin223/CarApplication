@@ -1,6 +1,5 @@
-﻿using CarShop.Models;
+﻿using CarApplication.Models;
 using Microsoft.AspNetCore.Mvc;
-using ShopTARgv23.Models;
 using System.Diagnostics;
 
 namespace CarApplication.Controllers

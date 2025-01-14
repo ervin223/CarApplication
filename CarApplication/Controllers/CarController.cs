@@ -1,18 +1,17 @@
-using CarShop.Core.Dto;
-using CarShop.Core.ServiceInterface;
+using CarApplication.Core.Dto;
+using CarApplication.Core.ServiceInterface;
+using CarApplication.Models.Car;
 using CarShop.Data;
-using CarShop.Models.Car;
 using Microsoft.AspNetCore.Mvc;
-using ShopTARgv23.Models.Cars;
 
 namespace CarApplication.Controllers
 {
     public class CarController : Controller
     {
-        private readonly ShopContext _context;
+        private readonly CarContext _context;
         private readonly ICarServices _carServices;
 
-        public CarController(ShopContext context, ICarServices carServices)
+        public CarController(CarContext context, ICarServices carServices)
         {
             _context = context;
             _carServices = carServices;
