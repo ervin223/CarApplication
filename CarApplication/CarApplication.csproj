@@ -63,4 +63,10 @@
     <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="7.2.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\CarApplication.ApplicationServices\CarApplication.ApplicationServices.csproj" />
+    <ProjectReference Include="..\CarApplication.Core\CarApplication.Core.csproj" />
+    <ProjectReference Include="..\CarApplication.Data\CarApplication.Data.csproj" />
+  </ItemGroup>
+
 </Project>

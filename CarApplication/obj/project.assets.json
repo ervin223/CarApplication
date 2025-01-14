@@ -1042,6 +1042,57 @@
             "rid": "win"
           }
         }
+      },
+      "CarApplication.ApplicationServices/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "CarApplication.Core": "1.0.0",
+          "CarApplication.Data": "1.0.0",
+          "Microsoft.EntityFrameworkCore": "9.0.0",
+          "Microsoft.EntityFrameworkCore.SqlServer": "9.0.0",
+          "Microsoft.Extensions.DependencyInjection": "9.0.0",
+          "Swashbuckle.AspNetCore.Swagger": "7.2.0"
+        },
+        "compile": {
+          "bin/placeholder/CarApplication.ApplicationServices.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/CarApplication.ApplicationServices.dll": {}
+        }
+      },
+      "CarApplication.Core/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore": "9.0.0",
+          "Microsoft.EntityFrameworkCore.SqlServer": "9.0.0",
+          "Microsoft.Extensions.DependencyInjection": "9.0.0",
+          "Swashbuckle.AspNetCore.Swagger": "7.2.0"
+        },
+        "compile": {
+          "bin/placeholder/CarApplication.Core.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/CarApplication.Core.dll": {}
+        }
+      },
+      "CarApplication.Data/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "CarApplication.Core": "1.0.0",
+          "Microsoft.EntityFrameworkCore": "9.0.0",
+          "Microsoft.EntityFrameworkCore.SqlServer": "9.0.0",
+          "Microsoft.Extensions.DependencyInjection": "9.0.0",
+          "Swashbuckle.AspNetCore.Swagger": "7.2.0"
+        },
+        "compile": {
+          "bin/placeholder/CarApplication.Data.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/CarApplication.Data.dll": {}
+        }
       }
     }
   },
@@ -2871,10 +2922,28 @@
         "system.windows.extensions.nuspec",
         "useSharedDesignerContext.txt"
       ]
+    },
+    "CarApplication.ApplicationServices/1.0.0": {
+      "type": "project",
+      "path": "../CarApplication.ApplicationServices/CarApplication.ApplicationServices.csproj",
+      "msbuildProject": "../CarApplication.ApplicationServices/CarApplication.ApplicationServices.csproj"
+    },
+    "CarApplication.Core/1.0.0": {
+      "type": "project",
+      "path": "../CarApplication.Core/CarApplication.Core.csproj",
+      "msbuildProject": "../CarApplication.Core/CarApplication.Core.csproj"
+    },
+    "CarApplication.Data/1.0.0": {
+      "type": "project",
+      "path": "../CarApplication.Data/CarApplication.Data.csproj",
+      "msbuildProject": "../CarApplication.Data/CarApplication.Data.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net8.0": [
+      "CarApplication.ApplicationServices >= 1.0.0",
+      "CarApplication.Core >= 1.0.0",
+      "CarApplication.Data >= 1.0.0",
       "Microsoft.EntityFrameworkCore >= 9.0.0",
       "Microsoft.EntityFrameworkCore.SqlServer >= 9.0.0",
       "Microsoft.Extensions.DependencyInjection >= 9.0.0",
@@ -2913,7 +2982,17 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\admin\\Documents\\CarApplication\\CarApplication.ApplicationServices\\CarApplication.ApplicationServices.csproj": {
+              "projectPath": "C:\\Users\\admin\\Documents\\CarApplication\\CarApplication.ApplicationServices\\CarApplication.ApplicationServices.csproj"
+            },
+            "C:\\Users\\admin\\Documents\\CarApplication\\CarApplication.Core\\CarApplication.Core.csproj": {
+              "projectPath": "C:\\Users\\admin\\Documents\\CarApplication\\CarApplication.Core\\CarApplication.Core.csproj"
+            },
+            "C:\\Users\\admin\\Documents\\CarApplication\\CarApplication.Data\\CarApplication.Data.csproj": {
+              "projectPath": "C:\\Users\\admin\\Documents\\CarApplication\\CarApplication.Data\\CarApplication.Data.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

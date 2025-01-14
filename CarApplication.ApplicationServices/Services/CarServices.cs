@@ -1,62 +1,74 @@
-﻿using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
+﻿using CarApplication.Core.Domain;
+using CarApplication.Core.Dto;
+using CarApplication.Core.ServiceInterface;
+using CarShop.Data;
 using Microsoft.EntityFrameworkCore;
-using AutoMapper;
-using Microsoft.OpenApi.Models;
-using CarApplication.Data;
-using CarApplication.Services;
 
-var builder = WebApplication.CreateBuilder(args);
-
-builder.Services.AddControllersWithViews();
-
-builder.Services.AddDbContext<CarApplicationContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
-
-builder.Services.AddScoped<ICarService, CarService>();
-
-builder.Services.AddAutoMapper(typeof(Program));
-
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen(options =>
+namespace CarApplication.ApplicationServices.Services
 {
-    options.SwaggerDoc("v1", new OpenApiInfo
+    public class CarServices : ICarServices
     {
-        Title = "Car Application API",
-        Version = "v1",
-        Description = "API для управления автомобилями"
-    });
-});
+        private readonly CarContext _context;
 
-var app = builder.Build();
+        public CarServices(CarContext context)
+        {
+            _context = context;
+        }
 
-if (app.Environment.IsDevelopment())
-{
-    app.UseDeveloperExceptionPage();
-    app.UseSwagger();
-    app.UseSwaggerUI(options =>
-    {
-        options.SwaggerEndpoint("/swagger/v1/swagger.json", "Car Application API v1");
-    });
+        public async Task<Car> Create(CarDto dto)
+        {
+            Car car = new Car();
+
+            car.Id = Guid.NewGuid();
+            car.Brand = dto.Brand;
+            car.Model = dto.Model;
+            car.ModelYear = dto.ModelYear;
+            car.Price = dto.Price;
+            car.CreatedAt = DateTime.Now;
+            car.UpdatedAt = DateTime.Now;
+
+            await _context.Cars.AddAsync(car);
+            await _context.SaveChangesAsync();
+
+            return car;
+        }
+
+        public async Task<Car> Update(CarDto dto)
+        {
+            var domain = new Car()
+            {
+                Id = dto.Id,
+                Brand = dto.Brand,
+                Model = dto.Model,
+                ModelYear = dto.ModelYear,
+                Price = dto.Price,
+                CreatedAt = dto.CreatedAt,
+                UpdatedAt = DateTime.Now
+            };
+
+            _context.Cars.Update(domain);
+            await _context.SaveChangesAsync();
+
+            return domain;
+        }
+
+        public async Task<Car> Delete(Guid id)
+        {
+            var carId = await _context.Cars
+                .FirstOrDefaultAsync(x => x.Id == id);
+
+            _context.Cars.Remove(carId);
+            await _context.SaveChangesAsync();
+
+            return carId;
+        }
+
+        public async Task<Car> GetAsync(Guid id)
+        {
+            var result = await _context.Cars
+                .FirstOrDefaultAsync(x => x.Id == id);
+
+            return result;
+        }
+    }
 }
-else
-{
-    app.UseExceptionHandler("/Home/Error");
-    app.UseHsts();
-}
-
-app.UseHttpsRedirection();
-app.UseStaticFiles();
-
-app.UseRouting();
-
-app.UseAuthorization();
-
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Cars}/{action=Index}/{id?}");
-
-app.Run();

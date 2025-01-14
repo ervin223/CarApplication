@@ -3,15 +3,11 @@
     public class Car
     {
         public Guid? Id { get; set; }
-        public string Name { get; set; }
-        public string Type { get; set; }
-        public DateTime BuiltDate { get; set; }
-        public int CargoWeight { get; set; }
-        public int Crew { get; set; }
-        public int EnginePower { get; set; }
-
-        // Только в базе данных
+        public int Price { get; set; }
+        public string Brand { get; set; }
+        public string Model { get; set; }
+        public int ModelYear { get; set; }
         public DateTime CreatedAt { get; set; }
-        public DateTime ModifiedAt { get; set; }
+        public DateTime UpdatedAt { get; set; }
     }
 }
