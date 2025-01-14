@@ -1,89 +1,174 @@
+using CarShop.Core.Dto;
+using CarShop.Core.ServiceInterface;
+using CarShop.Data;
+using CarShop.Models.Car;
 using Microsoft.AspNetCore.Mvc;
-using System.Diagnostics;
-using Microsoft.AspNetCore.Cors.Infrastructure;
-using ShopTARgv23.Models;
-
+using ShopTARgv23.Models.Cars;
 
 namespace CarApplication.Controllers
 {
     public class CarController : Controller
     {
-        private readonly ILogger<CarController> _logger;
-        private readonly ICarServices _carService;
+        private readonly ShopContext _context;
+        private readonly ICarServices _carServices;
 
-        public CarController(ILogger<CarController> logger, ICarServices carService)
+        public CarController(ShopContext context, ICarServices carServices)
         {
-            _logger = logger;
-            _carService = carService;
+            _context = context;
+            _carServices = carServices;
         }
 
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            var cars = await _carService.GetAllAsync();
-            return View(cars);
+            var result = _context.Cars
+                .Select(x => new CarIndexViewModel
+                {
+                    Id = x.Id,
+                    Price = x.Price,
+                    Brand = x.Brand,
+                    Model = x.Model,
+                    ModelYear = x.ModelYear,
+                });
+
+            return View(result);
         }
 
+        [HttpGet]
+        public async Task<IActionResult> Details(Guid id)
+        {
+            var car = await _carServices.GetAsync(id);
+
+            if (car == null)
+            {
+                return NotFound();
+            }
+
+            var vm = new CarDetailsViewModel();
+
+            vm.Id = car.Id;
+            vm.Brand = car.Brand;
+            vm.Model = car.Model;
+            vm.ModelYear = car.ModelYear;
+            vm.Price = car.Price;
+            vm.CreatedAt = car.CreatedAt;
+            vm.UpdatedAt = car.UpdatedAt;
+
+            return View(vm);
+        }
+
+        [HttpGet]
         public IActionResult Create()
         {
-            return View();
+            CarCreateUpdateViewModel car = new CarCreateUpdateViewModel();
+
+            return View("CreateUpdate", car);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(CarDto carDto)
+        public async Task<IActionResult> Create(CarCreateUpdateViewModel vm)
         {
-            if (ModelState.IsValid)
+            var dto = new CarDto()
             {
-                await _carService.CreateAsync(carDto);
+                Id = vm.Id,
+                Brand = vm.Brand,
+                Model = vm.Model,
+                ModelYear = vm.ModelYear,
+                Price = vm.Price,
+                CreatedAt = vm.CreatedAt,
+                UpdatedAt = vm.UpdatedAt,
+            };
+
+            var result = await _carServices.Create(dto);
+
+            if (result == null)
+            {
                 return RedirectToAction(nameof(Index));
             }
 
-            return View(carDto);
+            return RedirectToAction(nameof(Index), vm);
         }
 
-        public async Task<IActionResult> Edit(Guid id)
+        [HttpGet]
+        public async Task<IActionResult> Update(Guid id)
         {
-            var car = await _carService.GetDetailsAsync(id);
+            var car = await _carServices.GetAsync(id);
+
             if (car == null)
             {
                 return NotFound();
             }
-            return View(car);
+
+            var vm = new CarCreateUpdateViewModel();
+
+            vm.Id = car.Id;
+            vm.Brand = car.Brand;
+            vm.Model = car.Model;
+            vm.ModelYear = car.ModelYear;
+            vm.Price = car.Price;
+            vm.CreatedAt = car.CreatedAt;
+            vm.UpdatedAt = car.UpdatedAt;
+
+            return View("CreateUpdate", vm);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Edit(CarDto carDto)
+        public async Task<IActionResult> Update(CarCreateUpdateViewModel vm)
         {
-            if (ModelState.IsValid)
+            var dto = new CarDto()
             {
-                await _carService.UpdateAsync(carDto);
+                Id = vm.Id,
+                Brand = vm.Brand,
+                Model = vm.Model,
+                ModelYear = vm.ModelYear,
+                Price = vm.Price,
+                CreatedAt = vm.CreatedAt,
+                UpdatedAt = vm.UpdatedAt,
+            };
+
+            var result = await _carServices.Update(dto);
+
+            if (result == null)
+            {
                 return RedirectToAction(nameof(Index));
             }
 
-            return View(carDto);
+            return RedirectToAction(nameof(Index), vm);
         }
 
+        [HttpGet]
         public async Task<IActionResult> Delete(Guid id)
         {
-            var car = await _carService.GetDetailsAsync(id);
+            var car = await _carServices.GetAsync(id);
+
             if (car == null)
             {
                 return NotFound();
             }
 
-            return View(car);
+            var vm = new CarDeleteViewModel();
+
+            vm.Id = car.Id;
+            vm.Brand = car.Brand;
+            vm.Model = car.Model;
+            vm.ModelYear = car.ModelYear;
+            vm.Price = car.Price;
+            vm.CreatedAt = car.CreatedAt;
+            vm.UpdatedAt = car.UpdatedAt;
+
+            return View(vm);
         }
 
-        [HttpPost, ActionName("Delete")]
-        public async Task<IActionResult> DeleteConfirmed(Guid id)
+        [HttpPost]
+        public async Task<IActionResult> DeleteConfirmation(Guid id)
         {
-            await _carService.DeleteAsync(id);
+            var carId = await _carServices.Delete(id);
+
+            if (carId == null)
+            {
+                return RedirectToAction(nameof(Index));
+            }
+
             return RedirectToAction(nameof(Index));
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }
 }
