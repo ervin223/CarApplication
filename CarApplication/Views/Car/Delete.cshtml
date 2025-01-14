@@ -1,40 +1,50 @@
-﻿@model ShopTARgv23.Models.Cars.CarDeleteViewModel
+﻿@model CarApplication.Models.Car.CarDeleteViewModel
 
-<h1>Delete Car</h1>
+<h1>Delete</h1>
 
 <div>
-    <h4>Car Details</h4>
+    <h4>Car</h4>
     <hr />
     <dl class="row">
-        <dt>Id</dt>
-        <dd>@Model.Id</dd>
+        <div class="form-group row">
+            <label asp-for="Id" class="col-sm-2 col-form-label"></label>
+            @Html.DisplayFor(model => Model.Id)
+        </div>
 
-        <dt>Name</dt>
-        <dd>@Model.Name</dd>
+        <div class="form-group row">
+            <label asp-for="Brand" class="col-sm-2 col-form-label"></label>
+            @Html.DisplayFor(model => Model.Brand)
+        </div>
 
-        <dt>Type</dt>
-        <dd>@Model.Type</dd>
+        <div class="form-group row">
+            <label asp-for="Model" class="col-sm-2 col-form-label"></label>
+            @Html.DisplayFor(model => Model.Model)
+        </div>
 
-        <dt>Built Date</dt>
-        <dd>@Model.BuiltDate</dd>
+        <div class="form-group row">
+            <label asp-for="ModelYear" class="col-sm-2 col-form-label"></label>
+            @Html.DisplayFor(model => Model.ModelYear)
+        </div>
 
-        <dt>Cargo Weight</dt>
-        <dd>@Model.CargoWeight</dd>
+        <div class="form-group row">
+            <label asp-for="Price" class="col-sm-2 col-form-label"></label>
+            @Html.DisplayFor(model => Model.Price)
+        </div>
 
-        <dt>Crew</dt>
-        <dd>@Model.Crew</dd>
+        <div class="form-group row">
+            <label asp-for="CreatedAt" class="col-sm-2 col-form-label"></label>
+            @Html.DisplayFor(model => Model.CreatedAt)
+        </div>
 
-        <dt>Engine Power</dt>
-        <dd>@Model.EnginePower</dd>
-
-        @foreach (var images in Model.FileToApiViewModels)
-        {
-            <partial name="_Images" model="images" />
-        }
+        <div class="form-group row">
+            <label asp-for="UpdatedAt" class="col-sm-2 col-form-label"></label>
+            @Html.DisplayFor(model => Model.UpdatedAt)
+        </div>
     </dl>
+    <hr />
     <form asp-action="DeleteConfirmation">
         <input type="hidden" asp-for="Id" />
         <input type="submit" value="Delete" class="btn btn-danger" />
-        <a asp-action="Index" asp-controller="cars" class="btn btn-success">Back</a>
+        <a asp-action="index" class="btn btn-primary">Index</a>
     </form>
 </div>
