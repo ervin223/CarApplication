@@ -1,7 +1,7 @@
 ﻿using CarApplication.Core.Domain;
 using Microsoft.EntityFrameworkCore;
 
-namespace CarShop.Data
+namespace CarApplication.Data
 {
     public class CarContext : DbContext
     {

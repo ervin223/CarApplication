@@ -1,7 +1,7 @@
 ﻿using CarApplication.Core.Domain;
 using CarApplication.Core.Dto;
 using CarApplication.Core.ServiceInterface;
-using CarShop.Data;
+using CarApplication.Data;
 using Microsoft.EntityFrameworkCore;
 
 namespace CarApplication.ApplicationServices.Services

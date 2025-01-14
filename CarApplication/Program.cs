@@ -1,6 +1,6 @@
 ﻿using CarApplication.ApplicationServices.Services;
 using CarApplication.Core.ServiceInterface;
-using CarShop.Data;
+using CarApplication.Data;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);

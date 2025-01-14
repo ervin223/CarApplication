@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "5z1GDJ1rmQD6d2m0qSoJn+v0hrVVbNngPw+OkGUE2So/NEJc+bCQaWYdo9UdAQ6ieocg1NZtTMHcOJAVlyG6nw==",
+  "dgSpecHash": "nQu3AtpVJFj7omHf1HkuZWLIREqUu3DTYt9jO3WwIOzRHy8jQrgdXOUAJN2eDyDkN4FtoTpehod08J9+w4tGSw==",
   "success": true,
   "projectFilePath": "C:\\Users\\admin\\Documents\\CarApplication\\CarApplication\\CarApplication.csproj",
   "expectedPackageFiles": [
@@ -23,6 +23,7 @@
     "C:\\Users\\admin\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\9.0.0\\microsoft.entityframeworkcore.abstractions.9.0.0.nupkg.sha512",
     "C:\\Users\\admin\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\9.0.0\\microsoft.entityframeworkcore.analyzers.9.0.0.nupkg.sha512",
     "C:\\Users\\admin\\.nuget\\packages\\microsoft.entityframeworkcore.design\\9.0.0\\microsoft.entityframeworkcore.design.9.0.0.nupkg.sha512",
+    "C:\\Users\\admin\\.nuget\\packages\\microsoft.entityframeworkcore.inmemory\\9.0.0\\microsoft.entityframeworkcore.inmemory.9.0.0.nupkg.sha512",
     "C:\\Users\\admin\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\9.0.0\\microsoft.entityframeworkcore.relational.9.0.0.nupkg.sha512",
     "C:\\Users\\admin\\.nuget\\packages\\microsoft.entityframeworkcore.sqlserver\\9.0.0\\microsoft.entityframeworkcore.sqlserver.9.0.0.nupkg.sha512",
     "C:\\Users\\admin\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\9.0.0\\microsoft.extensions.caching.abstractions.9.0.0.nupkg.sha512",

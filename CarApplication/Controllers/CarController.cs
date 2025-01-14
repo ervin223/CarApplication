@@ -1,7 +1,7 @@
 using CarApplication.Core.Dto;
 using CarApplication.Core.ServiceInterface;
+using CarApplication.Data;
 using CarApplication.Models.Car;
-using CarShop.Data;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CarApplication.Controllers
