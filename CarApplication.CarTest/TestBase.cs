@@ -33,14 +33,12 @@ namespace CarApplication.CarTest
             return serviceProvider.GetService<T>();
         }
 
-        public virtual void SetupServices(IServiceCollection services)
+    public virtual void SetupServices(IServiceCollection services)
         {
             services.AddScoped<ICarServices, CarServices>();
 
             services.AddDbContext<CarContext>(x =>
             {
-                object value = x.UseInMemoryDatabase("TEST");
-                x.ConfigureWarnings(e => e.Ignore(InMemoryEventId.TransactionIgnoredWarning));
             });
 
             RegisterMacros(services);

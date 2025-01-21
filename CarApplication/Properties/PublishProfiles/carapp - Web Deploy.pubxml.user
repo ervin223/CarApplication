@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project>
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAiGS9qqhxqkWOL7BaKLkc0AAAAAACAAAAAAAQZgAAAAEAACAAAACBGNQaqF12jZuzZuaDPfc64D7rJAPCfn23eCLJdfIotgAAAAAOgAAAAAIAACAAAAB6S0LRKCEAF85kWLrlyv3OVhGuSUCi0pNHO4r0Js/1mSAAAAAc4YEGj2u0Q71XSNtTN0wBKBIkxJ2jxF0IKFzsYlhkD0AAAAC9ocBh+m0eVIn0IrRU1Oc91keCgUJdsfcQiAfp5muM8umSqcTHpq23ypsthhIeCkpCG1OMUf1t5InwrTxSg2kT</EncryptedPassword>
+    <History>False|2025-01-21T10:39:30.5784363Z;False|2025-01-21T11:34:10.4348077+02:00;False|2025-01-21T11:15:03.0379494+02:00;False|2025-01-21T11:10:30.1981753+02:00;False|2025-01-21T11:05:14.3278222+02:00;False|2025-01-21T11:04:20.5978537+02:00;False|2025-01-21T10:58:13.2128604+02:00;</History>
+    <LastFailureDetails />
+  </PropertyGroup>
+  <ItemGroup>
+    <AzureDBConnectionStrings Include="Data Source=carapplicationdbserver.database.windows.net,1433;Initial Catalog=CarApplication;User ID=erwin;Password=Loitsu2812" />
+    <AzureDBConnectionStrings Include="Data Source=carapplicationdbserver.database.windows.net,1433;Initial Catalog=CarApplication_db;User ID=erwin;Password=Loitsu2812" />
+    <AzureDBConnectionStrings Include="REDACTED" />
+  </ItemGroup>
+</Project>

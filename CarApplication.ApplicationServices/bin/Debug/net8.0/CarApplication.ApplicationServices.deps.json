@@ -10,7 +10,6 @@
         "dependencies": {
           "CarApplication.Core": "1.0.0",
           "CarApplication.Data": "1.0.0",
-          "Microsoft.EntityFrameworkCore": "9.0.0",
           "Microsoft.EntityFrameworkCore.SqlServer": "9.0.0",
           "Microsoft.Extensions.DependencyInjection": "9.0.0",
           "Swashbuckle.AspNetCore.Swagger": "7.2.0"
@@ -640,7 +639,6 @@
       },
       "CarApplication.Core/1.0.0": {
         "dependencies": {
-          "Microsoft.EntityFrameworkCore": "9.0.0",
           "Microsoft.EntityFrameworkCore.SqlServer": "9.0.0",
           "Microsoft.Extensions.DependencyInjection": "9.0.0",
           "Swashbuckle.AspNetCore.Swagger": "7.2.0"
@@ -652,7 +650,6 @@
       "CarApplication.Data/1.0.0": {
         "dependencies": {
           "CarApplication.Core": "1.0.0",
-          "Microsoft.EntityFrameworkCore": "9.0.0",
           "Microsoft.EntityFrameworkCore.SqlServer": "9.0.0",
           "Microsoft.Extensions.DependencyInjection": "9.0.0",
           "Swashbuckle.AspNetCore.Swagger": "7.2.0"
